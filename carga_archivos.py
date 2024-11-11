@@ -8,7 +8,8 @@ import time
 app = Flask(__name__)
 
 # Configuración de la carpeta de subidas
-UPLOAD_FOLDER = 'uploads'
+# UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Crear la carpeta de subidas si no existe
