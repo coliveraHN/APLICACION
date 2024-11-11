@@ -1,12 +1,11 @@
 import os
 import qrcode
 import shutil
-from flask import Flask, render_template, request, url_for, send_from_directory, redirect
+from flask import Flask, render_template, request, url_for, send_from_directory, redirect, flash
 from werkzeug.utils import secure_filename
 import time
 
 app = Flask(__name__)
-
 
 # Configuración de la carpeta de subidas
 UPLOAD_FOLDER = 'uploads'
@@ -150,4 +149,4 @@ if __name__ == '__main__':
     #app.run(debug=True)
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
         os.makedirs(app.config['UPLOAD_FOLDER'])
-    app.run (debug=True, host="0.0.0.0",port=os.getenv("PORT",default=5000))
+    app.run(debug=True, host="0.0.0.0", port=os.getenv("PORT", default=5000))
