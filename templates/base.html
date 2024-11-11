@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Menú de Navegación -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ url_for('upload') }}"><i class="fas fa-upload"></i> Subir Archivo</a></li>
+            <li><a href="{{ url_for('view_folders') }}"><i class="fas fa-folder-open"></i> Ver Carpetas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

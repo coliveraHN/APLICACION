@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a la Página de Subida de Archivos</h1>
+
+        <!-- Lista de Carpetas Existentes -->
+        <h2>Carpetas en el Directorio de Subidas</h2>
+        <ul>
+            {% for folder in folder_names %}
+                <li>{{ folder }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Botón para ir a la página de subida de archivos -->
+        <a href="{{ url_for('upload') }}" class="button">Subir un Archivo</a>
+    </div>
+</body>
+</html>

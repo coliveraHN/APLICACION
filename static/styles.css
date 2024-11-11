@@ -1,0 +1,137 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Fondo general */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal con efecto neón */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    background-color: rgba(20, 20, 20, 0.85);
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 255, 255, 0.2), 0px 0px 15px rgba(0, 255, 255, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+/* Títulos futuristas */
+h1 {
+    font-size: 26px;
+    color: #00e6e6;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px #00e6e6, 0 0 10px #00ffff;
+}
+
+/* Flash messages estilo tarjeta */
+.flash-messages {
+    background-color: rgba(0, 230, 230, 0.1);
+    border: 1px solid #00e6e6;
+    color: #a6f2f2;
+    font-size: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.4);
+}
+
+/* Inputs y etiquetas */
+label {
+    display: block;
+    font-weight: bold;
+    color: #bbb;
+    margin: 15px 0 5px;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #00e6e6;
+    background: rgba(0, 0, 0, 0.8);
+    color: #a6f2f2;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: #00ffff;
+    outline: none;
+}
+
+/* Botón con efecto neón */
+button,
+a.button {
+    display: inline-block;
+    background: linear-gradient(45deg, #00e6e6, #007a7a);
+    color: white;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(0, 230, 230, 0.4);
+}
+
+button:hover,
+a.button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+a.button {
+    background: linear-gradient(45deg, #00b3b3, #004d4d);
+    margin-top: 20px;
+}
+
+a.button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+/* Código QR con borde brillante */
+.qr-code img {
+    max-width: 200px;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 2px solid #00e6e6;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    button,
+    a.button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido de la carpeta: {{ folder_name }}</title>
+</head>
+<body>
+    <h1>Contenido de la carpeta: {{ folder_name }}</h1>
+
+    <ul>
+        {% if files %}
+            {% for file in files %}
+                <li><a href="{{ url_for('uploaded_file', filename=folder_name + '/' + file) }}">{{ file }}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>No hay archivos en esta carpeta.</p>
+        {% endif %}
+    </ul>
+
+    <a href="{{ url_for('upload') }}">Volver al formulario de carga</a>
+</body>
+</html>
+``

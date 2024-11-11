@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sube tu archivo</h1>
+
+        {% if not uploaded %}
+            <!-- Formulario para subir el archivo -->
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                <label for="folder_name">Nombre de la Carpeta:</label>
+                <input type="text" id="folder_name" name="folder_name" required>
+
+                <label for="file">Selecciona un Archivo:</label>
+                <input type="file" id="file" name="file" required>
+
+                <button type="submit">Subir Archivo</button>
+            </form>
+
+            <!-- Tabla de Carpetas Existentes -->
+            <h2>Carpetas en el Directorio de Subidas</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre de la Carpeta</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for folder in folder_names %}
+                        <tr>
+                            <td>{{ folder }}</td>
+                            <td>
+                                <!-- Formulario para renombrar la carpeta -->
+                                <form action="{{ url_for('rename_folder', folder_name=folder) }}" method="POST" style="display:inline;">
+                                    <input type="text" name="new_name" placeholder="Nuevo nombre">
+                                    <button type="submit">Renombrar</button>
+                                </form>
+
+                                <!-- Formulario para eliminar la carpeta con confirmación -->
+                                <form action="{{ url_for('delete_folder') }}" method="POST" style="display:inline;" onsubmit="return confirmDelete();">
+                                    <input type="hidden" name="folder_name" value="{{ folder }}">
+                                    <button type="submit">Eliminar</button>
+                                </form>
+
+                                <!-- Botón para ver los archivos dentro de la carpeta -->
+                                <a href="{{ url_for('view_files', folder_name=folder) }}" class="button">Ver Archivos</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <!-- Mensaje y QR después de subir el archivo -->
+            <div class="upload-success">
+                <h2>¡Archivo Subido Exitosamente!</h2>
+                <p>Haz clic en el QR para descargar el archivo.</p>
+                <div class="qr-code">
+                    <a href="{{ file_url }}" download>
+                        <img src="{{ qr_code_url }}" alt="Código QR para descargar el archivo">
+                    </a>
+                </div>
+                <br>
+                <!-- Botón para regresar a la página de inicio o recargar el formulario -->
+                <a href="{{ url_for('upload') }}" class="button">Subir otro archivo</a>
+            </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error-message">
+            <p style="color: red;">{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+
+    
+    <!-- Agregar la función de confirmación de eliminación -->
+    <script>
+        // Función para confirmar la eliminación de la carpeta
+        function confirmDelete() {
+            return confirm("¿Estás seguro de que deseas eliminar esta carpeta? ¡Esta acción no se puede deshacer!");
+        }
+    </script>
+
+</body>
+</html>

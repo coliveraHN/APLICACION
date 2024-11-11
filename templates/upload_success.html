@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subida Exitosa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>¡Archivo Subido Exitosamente!</h1>
+        <div class="flash-messages">
+            <ul>
+                <li>Tu archivo se ha subido correctamente.</li>
+                <li>Haz clic en el QR para descargarlo en cualquier momento.</li>
+            </ul>
+        </div>
+        <div class="qr-code">
+            <!-- Hacer que el QR sea clickeable -->
+            <a href="{{ qr_code_url }}" download>
+                <img src="{{ qr_code_url }}" alt="Código QR para descargar el archivo">
+            </a>
+        </div>
+        <p>Escanea el QR o haz clic en él para descargar el archivo.</p>
+        <a href="{{ url_for('upload') }}" class="button">Subir otro Archivo</a>
+    </div>
+
+</body>
+</html>
