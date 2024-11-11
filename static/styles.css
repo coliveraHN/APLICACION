@@ -6,14 +6,22 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Fondo general */
+/* Fondo general con animación */
 body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-size: 200% 200%;
     color: #ddd;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    animation: backgroundShift 10s ease infinite;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Contenedor principal con efecto neón */
@@ -26,18 +34,30 @@ body {
     box-shadow: 0px 10px 30px rgba(0, 255, 255, 0.2), 0px 0px 15px rgba(0, 255, 255, 0.5);
     text-align: center;
     transition: transform 0.3s ease;
+    animation: containerFadeIn 1s ease-in-out;
+}
+
+@keyframes containerFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .container:hover {
     transform: translateY(-5px);
 }
 
-/* Títulos futuristas */
+/* Títulos futuristas con efecto de brillo */
 h1 {
     font-size: 26px;
     color: #00e6e6;
     margin-bottom: 20px;
     text-shadow: 0 0 5px #00e6e6, 0 0 10px #00ffff;
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+    from { text-shadow: 0 0 5px #00e6e6, 0 0 10px #00ffff, 0 0 20px #00e6e6; }
+    to { text-shadow: 0 0 15px #00ffff, 0 0 25px #00e6e6, 0 0 40px #00ffff; }
 }
 
 /* Flash messages estilo tarjeta */
@@ -50,6 +70,12 @@ h1 {
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.4);
+    animation: fadeInFlash 1s ease-out forwards;
+}
+
+@keyframes fadeInFlash {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* Inputs y etiquetas */
@@ -58,6 +84,7 @@ label {
     font-weight: bold;
     color: #bbb;
     margin: 15px 0 5px;
+    animation: fadeIn 0.5s ease-out;
 }
 
 input[type="text"],
@@ -71,6 +98,7 @@ input[type="file"] {
     font-size: 14px;
     margin-bottom: 15px;
     transition: border-color 0.3s ease;
+    animation: fadeIn 0.5s ease-out;
 }
 
 input[type="text"]:focus,
@@ -79,7 +107,7 @@ input[type="file"]:focus {
     outline: none;
 }
 
-/* Botón con efecto neón */
+/* Botón con efecto de brillo y animación al hacer hover */
 button,
 a.button {
     display: inline-block;
@@ -95,6 +123,13 @@ a.button {
     transition: box-shadow 0.3s ease, transform 0.3s ease;
     margin-top: 15px;
     box-shadow: 0 4px 15px rgba(0, 230, 230, 0.4);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 4px 15px rgba(0, 230, 230, 0.4); }
+    50% { box-shadow: 0 4px 20px rgba(0, 255, 255, 0.6); }
+    100% { box-shadow: 0 4px 15px rgba(0, 230, 230, 0.4); }
 }
 
 button:hover,
@@ -119,6 +154,13 @@ a.button:hover {
     border-radius: 8px;
     border: 2px solid #00e6e6;
     box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Animación fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Responsivo */
@@ -133,5 +175,3 @@ a.button:hover {
         padding: 10px 20px;
     }
 }
-
-
